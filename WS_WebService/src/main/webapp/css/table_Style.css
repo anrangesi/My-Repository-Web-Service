@@ -1,0 +1,19 @@
+h1{
+color:white;
+font-size:30px;
+margin-left:47%;
+/*left: -width/2;*/
+margin-top: 100px;
+/*top: -right/2;*/
+}
+
+.tableStyle {
+margin-left:40%;
+left: -width/2;
+margin-top: 90xp;
+/*top: -right/2;*/
+}
+
+body{
+background: url(../img/leaf.jpg);
+}

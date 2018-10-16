@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-lazy-init="true"> 
+	<!-- 引入CXF Bean定义如下,早期的版本中使用 。 -->
+	<!-- 3.0以下都需要引入这三个文件，3.0以上只需要cxf.xml这一个xml文件就好 --> 
+<!--		<import resource="classpath*:META-INF/cxf/cxf.xml" /> -->
+<!--		<import resource="classpath*:META-INF/cxf/cxf-extension-soap.xml" /> -->
+<!--		<import resource="classpath*:META-INF/cxf/cxf-servlet.xml" />-->
+	 
+	<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 发布webservice xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--> 
+	<!-- WebService的实现Bean定义 -->
+	<!-- com.javen.service.impl.UserServiceImpl是接口实现类
+		web.xml配置了webservice的访问路径/server/*，那么/server/web-publish?wsdl就是该webservice的访问路径;
+		该webservice的访问路径前面要加上项目的路径 localhost:8080/项目名/server/web-publish?wsdl
+	-->
+	<bean id="iUserService" class="com.javen.service.impl.UserServiceImpl" /> 
+	<!-- 1.jax-ws endpoint定义  
+	2.implementor="#iUserService"，iUserService是接口，首字母小写 
+	3. jaxws:endpoint标签的id自定义就好 
+	4.address="/web-publish"是服务发布的地址，和web.xml中的<url-pattern>/server/*</url-pattern>标签的值相结合-->
+	<jaxws:endpoint id="myService" implementor="#iUserService"
+		address="/web-publish">
+	</jaxws:endpoint> 
+	<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 发布webservice xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--> 
+</beans>
+
