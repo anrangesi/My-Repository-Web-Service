@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../WS_Client/WS_Client.iml" filepath="$PROJECT_DIR$/../WS_Client/WS_Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/WS_WebService.iml" filepath="$PROJECT_DIR$/WS_WebService.iml" />
     </modules>
   </component>
